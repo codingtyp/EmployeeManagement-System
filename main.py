@@ -28,21 +28,51 @@ def main_menu():
                 exit_program()
             else:
                 print("\n")
-                print("m>> INVALID INPUT! Choose between 1 - 3 only!")
+                print("m>> INVALID INPUT!")
                 print("\n")
         except ValueError:
             print("\n")
-            print(">> INVALID INPUT! Characters and symbols are not accepted")
+            print(">> INVALID INPUT!")
             print("\n")
 
 
+
+
+
+# FUNCTION: CREATE EMPLOYEE DATA
+def create_data():
+    print("")
+
+
+
+
+
+# FUNCTION: READ EMPLOYEE DATA
+def read_data():
+    print("")
+
+
+
+
+
+# FUNCTION: UPDATE EMPLOYEE DATA
+def update_data():
+    print("")
+
+
+
+
+
+# FUNCTION: DELETE EMPLOYEE DATA
+def delete_data():
+    print("")
 
 
 
 
 # FUNCTION: EXIT
 def exit_program():
-    print("THANK YOU!")
+    print("THANK YOU FOR USING THE SYSTEM!")
     exit()
 
 
