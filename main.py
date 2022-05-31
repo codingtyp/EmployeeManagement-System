@@ -1,3 +1,6 @@
+from sympy import print_glsl
+
+
 class Employee:
     empLast = ""
     empFirst = ""
@@ -31,14 +34,6 @@ class Employee:
         print("Date of Birth:  ", self.empBirth)
 
 
-        
-
-class Work(Employee):
-    def __init__(self, empPosition, empDepartment, empSalary):
-        self.empPosition = empPosition
-        self.empDepartment = empDepartment
-        self.empSalary = empSalary
-
 
 
 
@@ -61,13 +56,31 @@ def main_menu():
 
 
             if menuChoice == 'c':
-                create_data()
+                print("")
+
+
+                emp1 = Employee()
+                emp2 = Employee()
+
+
+                generateChoice = input("Do you want to auto-generate data?   ")
+
+                if generateChoice == 'y':
+                    emp1.autoData("Doe", "John", "Smith", 20, "New York", "September 20, 1991")
+                    emp2.autoData("Doe", "Jane", "Smith", 25, "New York", "March 15, 1997")
+                elif generateChoice == 'n':
+                    emp1.setData()
+                    emp2.setData()
+
+
+
             elif menuChoice == 'r':
-                read_data()
+                emp1.displayData()
+                emp2.displayData()
             elif menuChoice == 'u':
-                update_data()
+                ()
             elif menuChoice == 'd':
-                delete_data()
+                ()
             elif menuChoice == 'e':
                 exit_program()
             else:
@@ -79,49 +92,6 @@ def main_menu():
             print(">> INVALID INPUT!")
             print("\n")
 
-
-
-
-
-# FUNCTION: CREATE EMPLOYEE DATA
-def create_data():
-    print("")
-
-
-    emp = Employee()
-
-    generateChoice = input("Do you want to auto-generate data?   ")
-
-    if generateChoice == 'y':
-        emp.setData()
-    elif generateChoice == 'n':
-        emp.autoData("Doe", "John", "Smith", 20, "Recodo", "September")
-
-    emp.displayData()
-
-
-    
-
-
-# FUNCTION: READ EMPLOYEE DATA
-def read_data():
-    print("")
-
-    emp = Employee()
-    emp.displayData()
-
-
-# FUNCTION: UPDATE EMPLOYEE DATA
-def update_data():
-    print("")
-
-
-
-
-
-# FUNCTION: DELETE EMPLOYEE DATA
-def delete_data():
-    print("")
 
 
 
