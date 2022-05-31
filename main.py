@@ -78,7 +78,7 @@ def main_menu():
                 emp1.displayData()
                 emp2.displayData()
             elif menuChoice == 'u':
-                ()
+                () 
             elif menuChoice == 'd':
                 ()
             elif menuChoice == 'e':
@@ -100,6 +100,8 @@ def main_menu():
 def exit_program():
     print("THANK YOU FOR USING THE SYSTEM!")
     exit()
+
+
 
 
 
