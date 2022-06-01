@@ -1,6 +1,3 @@
-from sympy import print_glsl
-
-
 class Employee:
     empLast = ""
     empFirst = ""
@@ -21,7 +18,7 @@ class Employee:
     def setData(self):
         self.empLast = input("Last name:   ")
         self.empFirst = input("First name:   ")
-        self.empMiddle = input("Last name:   ")
+        self.empMiddle = input("Midddle name:   ")
         self.empAge = int(input("Age:   "))
         self.empAddress = input("Address:   ")
         self.empBirth = input("Date of Birth:   ")
@@ -56,27 +53,26 @@ def main_menu():
 
 
             if menuChoice == 'c':
-                print("")
+                print("\n")
 
 
-                emp1 = Employee()
-                emp2 = Employee()
+                # Objects
+                emp = Employee()
 
-
-                generateChoice = input("Do you want to auto-generate data?   ")
-
-                if generateChoice == 'y':
-                    emp1.autoData("Doe", "John", "Smith", 20, "New York", "September 20, 1991")
-                    emp2.autoData("Doe", "Jane", "Smith", 25, "New York", "March 15, 1997")
-                elif generateChoice == 'n':
-                    emp1.setData()
-                    emp2.setData()
+    
+                totalData = int(input("How many data do you want to enter? "))
+                i = 0
+                for i in range (totalData):
+                    print("--------------------")
+                    emp.setData()
+                    print("--------------------\n")
 
 
 
             elif menuChoice == 'r':
-                emp1.displayData()
-                emp2.displayData()
+                i = 0
+                for i in range (totalData):
+                    emp.displayData()
             elif menuChoice == 'u':
                 () 
             elif menuChoice == 'd':
@@ -85,7 +81,7 @@ def main_menu():
                 exit_program()
             else:
                 print("\n")
-                print("m>> INVALID INPUT!")
+                print(">> INVALID INPUT!")
                 print("\n")
         except ValueError:
             print("\n")
