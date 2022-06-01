@@ -2,8 +2,9 @@
 
 ## :page_with_curl: FEATURES:
 - Create data
-- Auto generate data
+  - input *x* data
 - Read data
+  - List View
 
 <br/>
 <br/>

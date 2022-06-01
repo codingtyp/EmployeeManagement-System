@@ -1,39 +1,11 @@
-class Employee:
-    empLast = ""
-    empFirst = ""
-    empMiddle = ""
-    empAge = 0
-    empAddress = ""
-    empBirth = ""
+from employee import Employee                   # IMPORT LOCAL FILE CLASS (employee.py)
 
 
-    def autoData(self, empLast, empFirst, empMiddle, empAge, empAddress, empBirth):
-        self.empLast = empLast
-        self.empFirst = empFirst
-        self.empMiddle = empMiddle
-        self.empAge = empAge
-        self.empAddress = empAddress
-        self.empBirth = empBirth
-
-    def setData(self):
-        self.empLast = input("Last name:   ")
-        self.empFirst = input("First name:   ")
-        self.empMiddle = input("Midddle name:   ")
-        self.empAge = int(input("Age:   "))
-        self.empAddress = input("Address:   ")
-        self.empBirth = input("Date of Birth:   ")
+# Creates an empty list to store employee data
+employee_list = []
 
 
-    def displayData(self):
-        print("Name:           ", self.empLast, ",",self.empFirst, self.empMiddle)
-        print("Age:            ", self.empAge)
-        print("Address:        ", self.empAddress) 
-        print("Date of Birth:  ", self.empBirth)
-
-
-
-
-
+# FUNCTION TO DISPLAY MENU
 def main_menu():
     print("*********************************************************")
     print("*              EMPLOYEE MANAGEMENT SYSTEM               *")
@@ -53,30 +25,13 @@ def main_menu():
 
 
             if menuChoice == 'c':
-                print("\n")
-
-
-                # Objects
-                emp = Employee()
-
-    
-                totalData = int(input("How many data do you want to enter? "))
-                i = 0
-                for i in range (totalData):
-                    print("--------------------")
-                    emp.setData()
-                    print("--------------------\n")
-
-
-
-            elif menuChoice == 'r':
-                i = 0
-                for i in range (totalData):
-                    emp.displayData()
+                create_data()                        
+            elif menuChoice == 'r':    
+                read_data(employee_list)
             elif menuChoice == 'u':
-                () 
+                pass 
             elif menuChoice == 'd':
-                ()
+                pass
             elif menuChoice == 'e':
                 exit_program()
             else:
@@ -89,10 +44,39 @@ def main_menu():
             print("\n")
 
 
+# FUNCTION TO TAKE USER INPUT, STORE IN THE OBJECT, THEN STORE IN A LIST
+def create_data():
+    # Input x employees
+    totalEmployees = int(input("How many employees? "))
+
+    # Loop to iterate through each employee
+    for i in range(totalEmployees): 
+        # Input   
+        print("\n--------------------")
+        print('Enter the data for employee', int(i + 1))   
+        empID = int(input("ID?   "))
+        empLast = input("Last name?   ")
+        empFirst = input("First name?   ")
+        empMiddle = input("Middle name?   ")
+        print("--------------------\n")
+        print()
 
 
+        
+        worker = Employee(empID, empLast, empFirst, empMiddle)                  # Creates the object to store the atributes in
+        employee_list.append(worker)                                            # append the data into a list
+    return employee_list
 
-# FUNCTION: EXIT
+
+def read_data(employee_list):
+    for employee in employee_list:
+        print("ID:               ", employee.get_empID())
+        print("Last name:        ", employee.get_empLast())
+        print("First name:       ", employee.get_empFirst())
+        print("Middle name:      ", employee.get_empMiddle(),sep='')
+        print()
+
+# FUNCTION TO EXIT THE PROGRAN
 def exit_program():
     print("THANK YOU FOR USING THE SYSTEM!")
     exit()
