@@ -8,6 +8,7 @@
   - input *x* data
 - Read data
   - List View
+  - Table View
 
 <br/>
 <br/>

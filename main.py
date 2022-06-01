@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from employee import Employee                   # IMPORT LOCAL FILE CLASS (employee.py)
 
 
@@ -66,7 +67,9 @@ def create_data():
         empFirst = input("First name?   ")
         empMiddle = input("Middle name?   ")
         print("-------------------------")
-        print("\n")
+        print()
+        print(">> Data successfully added!")
+        print()
     
 
         worker = Employee(empID, empLast, empFirst, empMiddle)                  # Creates the object to store the atributes in
@@ -82,32 +85,35 @@ def read_data(employee_list):
     print("\n")
 
 
-    viewData = input("How do you like to view the data?  [l-ist/t-able]   ")
-
-    if viewData == 'L' or viewData == 'l':
-        print()
-        print ("{:<8} {:<15} {:<10}".format('Name','Age','Percent'))
-        for employee in employee_list:
-            print("+--------------+----------------")
-            print("| ID           | ", employee.get_empID())
-            print("| Last name    | ", employee.get_empLast())
-            print("| First name   | ", employee.get_empFirst())
-            print("| Middle name  | ", employee.get_empMiddle())
-            print("+--------------+----------------")
-            print("\n")
-    elif viewData == 'T' or viewData == 't':
-        print()
-        print("+=======+==============+================+==================+")
-        print ("{:<5} {:<10} {:<10} {:<15} ".
-        format('|   ID  | ',' Last name  | ',' First name   | ', '  Middle name   |'))
-        print("+=======+==============+================+==================+")
-
-        for employee in employee_list:
-            print ("{:<5} {:<10} {:<10} {:<15}".format( employee.get_empID(), employee.get_empLast(), employee.get_empFirst(), employee.get_empMiddle()))
+    if len(employee_list) == 0:
+        print(">> No data found!\n\n")
     else:
-        print("\n")
-        print(">> INVALID INPUT!")
-        print("\n")
+        viewData = input("How do you like to view the data?  [l-ist/t-able]   ")
+
+        if viewData == 'L' or viewData == 'l':
+            print("\n")
+            for employee in employee_list:
+                print("+---------------+----------------")
+                print("|  ID           | ", employee.get_empID())
+                print("|  Last name    | ", employee.get_empLast())
+                print("|  First name   | ", employee.get_empFirst())
+                print("|  Middle name  | ", employee.get_empMiddle())
+                print("+---------------+----------------")
+                print("\n")
+        elif viewData == 'T' or viewData == 't':
+            print("\n")
+            print("+========+=======================+========================+")
+            print ("{:<23} {:<10} ".
+            format('|   ID   | ', 'NAME             |'))
+            print("+========+=======================+=========================+")
+
+            for employee in employee_list:
+                print ("   {:<14}{:<1}, {:<1} {:<1}".format( employee.get_empID(), employee.get_empLast(), employee.get_empFirst(), employee.get_empMiddle()))
+            print("\n")
+        else:
+            print("\n")
+            print(">> INVALID INPUT!")
+            print("\n")
 
 
 
