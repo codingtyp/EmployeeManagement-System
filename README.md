@@ -1,4 +1,4 @@
-# Employee Management Sytem
+# Employee Management System
 
 <br/>
 <br/>

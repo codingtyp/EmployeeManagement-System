@@ -1,5 +1,4 @@
-from asyncio.windows_events import NULL
-from employee import Employee                   # IMPORT LOCAL FILE CLASS (employee.py)
+from employee import EMP                   # IMPORT LOCAL FILE CLASS (employee.py)
 
 
 # Creates an empty list to store employee data
@@ -66,14 +65,14 @@ def create_data():
         empLast = input("Last name?   ")
         empFirst = input("First name?   ")
         empMiddle = input("Middle name?   ")
+        empAge = int(input("Age?   "))
         print("-------------------------")
-        print()
         print(">> Data successfully added!")
         print()
     
 
-        worker = Employee(empID, empLast, empFirst, empMiddle)                  # Creates the object to store the atributes in
-        employee_list.append(worker)                                            # append the data into a list
+        empData = EMP(empID, empLast, empFirst, empMiddle, empAge)                      # Creates the object to store the atributes
+        employee_list.append(empData)                                                    # append the data into a list
     return employee_list
 
 
@@ -93,22 +92,23 @@ def read_data(employee_list):
         if viewData == 'L' or viewData == 'l':
             print("\n")
             for employee in employee_list:
-                print("+---------------+----------------")
-                print("|  ID           | ", employee.get_empID())
-                print("|  Last name    | ", employee.get_empLast())
-                print("|  First name   | ", employee.get_empFirst())
-                print("|  Middle name  | ", employee.get_empMiddle())
-                print("+---------------+----------------")
+                print("+-----------------+--------------")
+                print("|  ID             | ", employee.get_empID())
+                print("|  Last name      | ", employee.get_empLast())
+                print("|  First name     | ", employee.get_empFirst())
+                print("|  Middle name    | ", employee.get_empMiddle())
+                print("|  Age            | ", employee.get_empAge())
+                print("+-----------------+--------------")
                 print("\n")
         elif viewData == 'T' or viewData == 't':
             print("\n")
             print("+========+=======================+========================+")
-            print ("{:<23} {:<10} ".
-            format('|   ID   | ', 'NAME             |'))
+            print ("{:<23} {:<20} {:<1}".
+            format('|   ID   | ', 'NAME             |', 'Age  | '))
             print("+========+=======================+=========================+")
 
             for employee in employee_list:
-                print ("   {:<14}{:<1}, {:<1} {:<1}".format( employee.get_empID(), employee.get_empLast(), employee.get_empFirst(), employee.get_empMiddle()))
+                print ("   {:<14}{:<1}, {:<1} {:<13} {:<1}".format( employee.get_empID(), employee.get_empLast(), employee.get_empFirst(), employee.get_empMiddle(), employee.get_empAge()))
             print("\n")
         else:
             print("\n")
