@@ -63,7 +63,7 @@ class Employee:
 
 
 # Subclass of the Employee class
-class Work(Employee):
+class Worker(Employee):
     # Initializes all the attributes and inherits the super class' attributes
     def __init__(self, empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary):
         Employee.__init__(self, empID, empLast, empFirst, empMiddle, empAge)

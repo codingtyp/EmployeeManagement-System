@@ -8,7 +8,7 @@
   - input *x* data
 - Read data
   - List View
-  - Table View
+  - Table View (UNSTABLE)
 
 <br/>
 <br/>

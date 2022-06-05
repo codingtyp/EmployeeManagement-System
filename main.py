@@ -1,5 +1,5 @@
-                  # IMPORT LOCAL FILE CLASS (employee.py)
 import employee
+
 
 # Creates an empty list to store employee data
 employee_list = []
@@ -17,6 +17,7 @@ def main_menu():
         try:
             print("[C]reate")
             print("[R]ead")
+            print("[D]elete")
             print("[E]xit")
             print("---------")
             menuChoice = input("Choice: ")
@@ -26,6 +27,8 @@ def main_menu():
                 create_data()                        
             elif menuChoice == 'R' or menuChoice == 'r':    
                 read_data(employee_list)
+            elif menuChoice == 'D' or menuChoice == 'd':
+                delete_data(employee_list)
             elif menuChoice == 'E' or menuChoice == 'e':
                 exit_program()
             else:
@@ -131,7 +134,7 @@ def create_data():
         print()
 
 
-        empData = employee.Work(empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary)         # Creates the object to store the atributes
+        empData = employee.Worker(empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary)         # Creates the object to store the atributes
         employee_list.append(empData)                                                                                       # append the data into a list
     return employee_list
 
@@ -166,13 +169,14 @@ def read_data(employee_list):
                 print("\n")
         elif viewData == 'T' or viewData == 't':
             print("\n")
+            # REVIEW TABLE VIEW IS UNSTABLE
             print("+========+===============================+========+==============================+===========+")
             print ("{:<23} {:<20} {:<10} {:<8} {:<1}".
             format('|   ID   | ', 'NAME             |', 'AGE  | ', 'DEPARTMENT & POSITION    | ', ' SALARY  |'))
             print("+========+===============================+========+==============================+===========+")
 
             for employee in employee_list:
-                print ("|  {:<14} |{:<1} {:<1} {:18} | {:<20} {:<1} {:<10} {:<10} |"
+                print ("  {:<11} {:<1}, {:<1} {:12} {:<12} {:<1}, {:<10} {:<1}"
                             .format( employee.get_empID(), employee.get_empLast(), 
                             employee.get_empFirst(), employee.get_empMiddle(), 
                             employee.get_empAge(), employee.get_empDepartment(), 
@@ -185,9 +189,25 @@ def read_data(employee_list):
 
 
 
+# FUNCTION TO DELETE AN EMPLOYEE DATA BY empID
+def delete_data(employee_list):
+    print("\n")
 
 
-# FUNCTION TO EXIT THE PROGRAN
+    empID = int(input("ID?   "))
+    for i in employee_list: 
+        if empID in employee_list:
+
+            break
+
+    print()
+    print(">> Data successfully deleted")
+    print()
+
+
+
+
+# FUNCTION TO EXIT THE PROGRAM
 def exit_program():
     print("THANK YOU VERY MUCH!")
     exit()
