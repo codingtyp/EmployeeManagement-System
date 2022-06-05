@@ -63,9 +63,10 @@ class Employee:
 
 
 # Subclass of the Employee class
-class Wrok(Employee):
-    # init method initializes all the attributes and inherits the super class' attributes
-    def __init__(self, empDepartment, empPosition, empSalary):
+class Work(Employee):
+    # Initializes all the attributes and inherits the super class' attributes
+    def __init__(self, empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary):
+        Employee.__init__(self, empID, empLast, empFirst, empMiddle, empAge)
         self.__empDepartment = empDepartment
         self.__empPosition = empPosition
         self.__empSalary = empSalary
@@ -81,7 +82,7 @@ class Wrok(Employee):
 
     # The set method sets the position attribute
     def set_empempPosition(self, empPosition):
-        self.__empempPosition = empPosition
+        self.__empPosition = empPosition
     
     # The set method sets the salary attribute
     def set_empempSalary(self, empSalary):
