@@ -6,7 +6,7 @@ employee_list = []
 
 
 # FUNCTION TO DISPLAY MENU
-def main_menu():
+def main():
     print("*********************************************************")
     print("*              EMPLOYEE MANAGEMENT SYSTEM               *")
     print("*********************************************************")
@@ -47,6 +47,11 @@ def main_menu():
 # FUNCTION TO TAKE USER INPUT, STORE IN THE OBJECT, THEN STORE IN A LIST
 def create_data():    
     print()
+
+
+    print("====================")
+    print("CREATE EMPLOYEE DATA")
+    print("====================")
 
 
     # Determine how many data will be entered
@@ -134,8 +139,10 @@ def create_data():
         print()
 
 
-        empData = employee.Worker(empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary)         # Creates the object to store the atributes
+        empData = employee.Worker(empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary)       # Creates the object to store the atributes
         employee_list.append(empData)                                                                                       # append the data into a list
+    
+    
     return employee_list
 
 
@@ -147,25 +154,31 @@ def read_data(employee_list):
     print("\n")
 
 
+     # Check if there is atleast 1 data in the list
     if len(employee_list) == 0:
         print(">> No data found!\n\n")
     else:
+        print("====================")
+        print("READ EMPLOYEE DATA")
+        print("====================")
         viewData = input("How do you like to view the data?  [l-ist/t-able]   ")
 
+
+        # Determine what view to be display
         if viewData == 'L' or viewData == 'l':
             print("\n")
-            for employee in employee_list:
-                print("+-------------------+-------------=")
-                print("|  ID               | ", employee.get_empID())
-                print("|  Last name        | ", employee.get_empLast())
-                print("|  First name       | ", employee.get_empFirst())
-                print("|  Middle name      | ", employee.get_empMiddle())
-                print("|  Age              | ", employee.get_empAge())
-                print("+-------------------+----- ")
-                print("|  Department       | ", employee.get_empDepartment())
-                print("|  Position         | ", employee.get_empPosition())
-                print("|  Salary(monthly)  | ", employee.get_empSalary())
-                print("+-------------------+-------------=")
+            for i in employee_list:
+                print("+-------------------+-----------------------=")
+                print("|  ID               | ", i.get_empID())
+                print("|  Last name        | ", i.get_empLast())
+                print("|  First name       | ", i.get_empFirst())
+                print("|  Middle name      | ", i.get_empMiddle())
+                print("|  Age              | ", i.get_empAge())
+                print("+-------------------+---------- ")
+                print("|  Department       | ", i.get_empDepartment())
+                print("|  Position         | ", i.get_empPosition())
+                print("|  Salary           | ", i.get_empSalary())
+                print("+-------------------+-----------------------=")
                 print("\n")
         elif viewData == 'T' or viewData == 't':
             print("\n")
@@ -176,7 +189,7 @@ def read_data(employee_list):
             print("+========+===============================+========+==============================+===========+")
 
             for employee in employee_list:
-                print ("  {:<11} {:<1}, {:<1} {:12} {:<12} {:<1}, {:<10} {:<1}"
+                print ("|  {:<2} |        {:<1}, {:<1} {:12} {:<12} {:<1}, {:<10} {:<1}"
                             .format( employee.get_empID(), employee.get_empLast(), 
                             employee.get_empFirst(), employee.get_empMiddle(), 
                             employee.get_empAge(), employee.get_empDepartment(), 
@@ -189,20 +202,41 @@ def read_data(employee_list):
 
 
 
+
+
 # FUNCTION TO DELETE AN EMPLOYEE DATA BY empID
 def delete_data(employee_list):
     print("\n")
 
 
-    empID = int(input("ID?   "))
-    for i in employee_list: 
-        if empID in employee_list:
+    print("====================")
+    print("DELETE EMPLOYEE DATA")
+    print("====================")
 
-            break
 
-    print()
-    print(">> Data successfully deleted")
-    print()
+    # Check if there is atleast 1 data in the list
+    if len(employee_list) == 0:
+        print(">> No data found!\n\n")
+    else:
+        emplyeeCount = len(employee_list)                               # Total employee data in the list 
+        count = -1                                                      # Looping whole numbers for display
+
+        print("There are ", emplyeeCount, "employee data stored.")       
+        for i in employee_list:       
+            count = count + 1
+            print("\t", count, "== Employee ID", i.get_empID())
+        deleteData = int(input("Which data do you want to delete?   "))
+    
+        del employee_list[deleteData]                                    # Delete data by index in the list
+    
+
+        print()
+        print(">> Data successfully deleted")
+        print()
+    
+    
+    return employee_list
+
 
 
 
@@ -221,8 +255,10 @@ def exit_program():
 
 
 
-""""" 
-    MAIN CODE 
-"""""
-# Start program
-main_menu()
+# # #
+#                  
+#   MAIN CODE   
+# 
+# # #             
+if __name__ == "__main__":
+    main()
