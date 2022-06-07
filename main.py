@@ -19,6 +19,7 @@ def main():
             print("[C]reate")
             print("[R]ead")
             print("[D]elete")
+            print("[U]pdate")
             print("[E]xit")
             print("---------")
             menuChoice = input("Choice: ")
@@ -28,17 +29,19 @@ def main():
                 create_data()                        
             elif menuChoice == 'R' or menuChoice == 'r':    
                 read_data(employee_list)
+            elif menuChoice == 'U' or menuChoice == 'u':    
+                update_data(employee_list)    
             elif menuChoice == 'D' or menuChoice == 'd':
                 delete_data(employee_list)
             elif menuChoice == 'E' or menuChoice == 'e':
                 exit_program()
             else:
                 print("\n")
-                print(">> INVALID INPUT!")
+                print(">> Invalid input!")
                 print("\n")
         except ValueError:
             print("\n")
-            print(">> INVALID INPUT!")
+            print(">> Invalid input!")
             print("\n")
 
 
@@ -50,7 +53,7 @@ def create_data():
     print("\n")
 
 
-    # Determine how many data will be entered
+    # Input how many employee data will be entered
     while True:
         try:
             totalEmployees = int(input("How many employee/s?   "))
@@ -58,10 +61,10 @@ def create_data():
             break
         except ValueError:
             print("\n")
-            print(">> INVALID INPUT!")
+            print(">> Invalid input!")
             print("\n")
 
-    # Loop to iterate through each employee
+    # Iterate each employee
     for i in range(totalEmployees): 
         # Input   
         print("-----------", int(i + 1), "-----------") 
@@ -94,7 +97,7 @@ def create_data():
             empDepartment = "Customer Service"
         else:
             print()
-            print(">> INVALID INPUT!")
+            print(">> Invalid input!")
             print()
 
 
@@ -126,7 +129,7 @@ def create_data():
             empSalary = 5000
         else:
             print()
-            print(">> INVALID INPUT!")
+            print(">> Invalid input!")
             print()
         
         
@@ -135,11 +138,11 @@ def create_data():
         print()
 
 
-        empData = employee.Worker(empID, empLN, empFN, empMN, empAge, empDepartment, empPosition, empSalary)       # Creates the object to store the atributes
-        employee_list.append(empData)                                                                                       # append the data into a list
+        empData = employee.Worker(empID, empLN, empFN, empMN, empAge, empDepartment, empPosition, empSalary)        # Creates the object to store the atributes
+        employee_list.append(empData)                                                                               # append the data into a list
     
     
-    return employee_list
+    return employee_list                                                # Return the updated list
 
 
 
@@ -175,7 +178,6 @@ def read_data(employee_list):
                 print("\n")
         elif viewData == 'T' or viewData == 't':
             print("\n")
-            # REVIEW TABLE VIEW IS UNSTABLE
             print("+========+===============================+========+========================================+==============+")
             print ("{:<23} {:<20} {:<15} {:<8} {:<1}".
             format('|   ID   |  ', 'NAME             |', 'AGE  | ', 'DEPARTMENT & POSITION          | ', '  SALARY   |'))
@@ -190,14 +192,26 @@ def read_data(employee_list):
             print("\n")
         else:
             print("\n")
-            print(">> INVALID INPUT!")
+            print(">> Invalid input!")
             print("\n")
 
 
 
 
 
-# FUNCTION TO DELETE AN EMPLOYEE DATA BY empID
+# FUNCTION TO DELETE AN EMPLOYEE DATA
+def update_data(employee_list):
+    print("\n")
+    print("Under construction!")
+
+
+    return employee_list                                                # Return the updated list
+
+
+
+
+
+# FUNCTION TO DELETE AN EMPLOYEE DATA
 def delete_data(employee_list):
     print("\n")
 
@@ -215,15 +229,15 @@ def delete_data(employee_list):
             print("\t", count, "== Employee ID", i.get_empID())
         deleteData = int(input("Which data do you want to delete?   "))
     
-        del employee_list[deleteData]                                    # Delete data by index in the list
+        del employee_list[deleteData]                                   # Delete data by index in the list
     
 
         print()
-        print(">> Data successfully deleted")
+        print(">> Data successfully deleted!")
         print()
     
     
-    return employee_list
+    return employee_list                                                # Return the updated list
 
 
 
