@@ -1,11 +1,11 @@
 # Creates the Employee superclass and initializes attributes
 class Employee:
     # init method initializes the name and id attributes
-    def __init__(self, empID, empLast, empFirst, empMiddle, empAge):
+    def __init__(self, empID, empLN, empFN, empMN, empAge):
         self.__empID = empID
-        self.__empLast = empLast
-        self.__empFirst = empFirst
-        self.__empMiddle = empMiddle
+        self.__empLN = empLN
+        self.__empFN = empFN
+        self.__empMN = empMN
         self.__empAge = empAge
 
 
@@ -18,16 +18,16 @@ class Employee:
         self.__empID = empID
 
     # The set method sets the last name attribute
-    def set_empLast(self, empLast):
-        self.__empLast = empLast
+    def set_empLN(self, empLN):
+        self.__empLN = empLN
 
     # The set method sets the first name attribute
-    def set_empFirst(self, empFirst):
-        self.__empFirst = empFirst
+    def set_empFN(self, empFN):
+        self.__empFN = empFN
 
     # The set method sets the middle name attribute    
-    def set_empMiddle(self, empMiddle):
-        self.__empMiddle = empMiddle 
+    def set_empMN(self, empMN):
+        self.__empMN = empMN 
 
     # The set method sets the age attribute 
     def set_empAge(self, empAge):
@@ -43,16 +43,16 @@ class Employee:
         return self.__empID
 
     # The get method returns the last name attribute
-    def get_empLast(self):
-        return self.__empLast
+    def get_empLN(self):
+        return self.__empLN
 
     # The get method returns the first name attribute
-    def get_empFirst(self):
-        return self.__empFirst
+    def get_empFN(self):
+        return self.__empFN
 
     # The get method returns the middle name attribute
-    def get_empMiddle(self):
-        return self.__empMiddle    
+    def get_empMN(self):
+        return self.__empMN    
        
     # The get method sets the age attribute 
     def get_empAge(self):
@@ -65,8 +65,8 @@ class Employee:
 # Subclass of the Employee class
 class Worker(Employee):
     # Initializes all the attributes and inherits the super class' attributes
-    def __init__(self, empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary):
-        Employee.__init__(self, empID, empLast, empFirst, empMiddle, empAge)
+    def __init__(self, empID, empLN, empFN, empMN, empAge, empDepartment, empPosition, empSalary):
+        Employee.__init__(self, empID, empLN, empFN, empMN, empAge)
         self.__empDepartment = empDepartment
         self.__empPosition = empPosition
         self.__empSalary = empSalary

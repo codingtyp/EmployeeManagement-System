@@ -1,3 +1,4 @@
+from pickle import TRUE
 import employee
 
 
@@ -46,18 +47,13 @@ def main():
 
 # FUNCTION TO TAKE USER INPUT, STORE IN THE OBJECT, THEN STORE IN A LIST
 def create_data():    
-    print()
-
-
-    print("====================")
-    print("CREATE EMPLOYEE DATA")
-    print("====================")
+    print("\n")
 
 
     # Determine how many data will be entered
     while True:
         try:
-            totalEmployees = int(input("How many employees?   "))
+            totalEmployees = int(input("How many employee/s?   "))
             print()
             break
         except ValueError:
@@ -70,9 +66,9 @@ def create_data():
         # Input   
         print("-----------", int(i + 1), "-----------") 
         empID = int(input("ID?   "))
-        empLast = input("Last name?   ")
-        empFirst = input("First name?   ")
-        empMiddle = input("Middle name?   ")
+        empLN = input("Last name?   ")
+        empFN = input("First name?   ")
+        empMN = input("Middle name?   ")
         empAge = int(input("Age?   "))
         
 
@@ -139,7 +135,7 @@ def create_data():
         print()
 
 
-        empData = employee.Worker(empID, empLast, empFirst, empMiddle, empAge, empDepartment, empPosition, empSalary)       # Creates the object to store the atributes
+        empData = employee.Worker(empID, empLN, empFN, empMN, empAge, empDepartment, empPosition, empSalary)       # Creates the object to store the atributes
         employee_list.append(empData)                                                                                       # append the data into a list
     
     
@@ -158,9 +154,6 @@ def read_data(employee_list):
     if len(employee_list) == 0:
         print(">> No data found!\n\n")
     else:
-        print("====================")
-        print("READ EMPLOYEE DATA")
-        print("====================")
         viewData = input("How do you like to view the data?  [l-ist/t-able]   ")
 
 
@@ -170,9 +163,9 @@ def read_data(employee_list):
             for i in employee_list:
                 print("+-------------------+-----------------------=")
                 print("|  ID               | ", i.get_empID())
-                print("|  Last name        | ", i.get_empLast())
-                print("|  First name       | ", i.get_empFirst())
-                print("|  Middle name      | ", i.get_empMiddle())
+                print("|  Last name        | ", i.get_empLN())
+                print("|  First name       | ", i.get_empFN())
+                print("|  Middle name      | ", i.get_empMN())
                 print("|  Age              | ", i.get_empAge())
                 print("+-------------------+---------- ")
                 print("|  Department       | ", i.get_empDepartment())
@@ -183,15 +176,15 @@ def read_data(employee_list):
         elif viewData == 'T' or viewData == 't':
             print("\n")
             # REVIEW TABLE VIEW IS UNSTABLE
-            print("+========+===============================+========+==============================+===========+")
-            print ("{:<23} {:<20} {:<10} {:<8} {:<1}".
-            format('|   ID   | ', 'NAME             |', 'AGE  | ', 'DEPARTMENT & POSITION    | ', ' SALARY  |'))
-            print("+========+===============================+========+==============================+===========+")
+            print("+========+===============================+========+========================================+==============+")
+            print ("{:<23} {:<20} {:<15} {:<8} {:<1}".
+            format('|   ID   |  ', 'NAME             |', 'AGE  | ', 'DEPARTMENT & POSITION          | ', '  SALARY   |'))
+            print("+========+===============================+========+========================================+==============+")
 
             for employee in employee_list:
-                print ("|  {:<2} |        {:<1}, {:<1} {:12} {:<12} {:<1}, {:<10} {:<1}"
-                            .format( employee.get_empID(), employee.get_empLast(), 
-                            employee.get_empFirst(), employee.get_empMiddle(), 
+                print ("   {:<2}         {:<1}, {:<1} {:14} {:<11} {:<1}, {:<15} {:<1}"
+                            .format( employee.get_empID(), employee.get_empLN(), 
+                            employee.get_empFN(), employee.get_empMN(), 
                             employee.get_empAge(), employee.get_empDepartment(), 
                             employee.get_empPosition(), employee.get_empSalary()))
             print("\n")
@@ -207,11 +200,6 @@ def read_data(employee_list):
 # FUNCTION TO DELETE AN EMPLOYEE DATA BY empID
 def delete_data(employee_list):
     print("\n")
-
-
-    print("====================")
-    print("DELETE EMPLOYEE DATA")
-    print("====================")
 
 
     # Check if there is atleast 1 data in the list
